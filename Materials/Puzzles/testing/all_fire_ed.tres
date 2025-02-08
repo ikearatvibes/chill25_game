@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Puzzle" load_steps=2 format=3 uid="uid://wksw4y3nkyqq"]
+
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="1_j3j00"]
+
+[resource]
+script = ExtResource("1_j3j00")
+name = "Fired"
+title = "RE: RE: RE: RE: Note From CEO"
+starting_text = "You are all the fire that keeps this company running, especially ed!"
+solved_text = Array[String](["You are all fire ed!"])
+prompt = "Termination"
+word_deletes = 8
+word_moves = 0

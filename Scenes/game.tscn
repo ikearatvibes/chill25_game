@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6aqsqnku85i3"]
+[gd_scene load_steps=14 format=3 uid="uid://b6aqsqnku85i3"]
 
 [ext_resource type="Script" path="res://Scenes/Windows/window_manager.gd" id="1_2r07c"]
 [ext_resource type="PackedScene" uid="uid://cb7eoklmootph" path="res://Scenes/Windows/window.tscn" id="1_cmsv7"]
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_ihet3"]
 [ext_resource type="Shader" path="res://Materials/Shaders/background.gdshader" id="2_vguof"]
 [ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="3_aj0kh"]
-[ext_resource type="Resource" uid="uid://ct156rbcf6i0g" path="res://Materials/Puzzles/testing/Test1Puzzle.tres" id="4_ya17i"]
 [ext_resource type="Resource" uid="uid://cn8gss8d2dg45" path="res://Materials/Puzzles/testing/Test2Puzzle.tres" id="5_koc2f"]
+[ext_resource type="Resource" uid="uid://wksw4y3nkyqq" path="res://Materials/Puzzles/testing/all_fire_ed.tres" id="5_t51m8"]
 [ext_resource type="Resource" uid="uid://bdj0t4hwgm6vo" path="res://Materials/Puzzles/testing/Test3Puzzle.tres" id="6_y3jhq"]
+[ext_resource type="Resource" uid="uid://1pmprxwcs0ah" path="res://Materials/Puzzles/testing/drinking.tres" id="7_m8j71"]
+[ext_resource type="Resource" uid="uid://tyonv3ryqsmv" path="res://Materials/Puzzles/testing/malaysia.tres" id="8_6qifb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rek5k"]
 shader = ExtResource("2_vguof")
@@ -48,7 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2r07c")
-puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("4_ya17i"), ExtResource("5_koc2f"), ExtResource("6_y3jhq")])
+puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("5_t51m8"), ExtResource("6_y3jhq"), ExtResource("7_m8j71"), ExtResource("5_koc2f"), ExtResource("8_6qifb")])
 
 [node name="Window" parent="WindowManager" instance=ExtResource("1_cmsv7")]
 layout_mode = 1
@@ -64,6 +66,7 @@ offset_bottom = 0.0
 
 [node name="ParticlePlacer" type="Control" parent="WindowManager"]
 layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -90,5 +93,19 @@ scale_amount_min = 2.5
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_wayp8")
 color_ramp = SubResource("Gradient_axt8n")
+
+[node name="NextButton" type="Button" parent="WindowManager"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_top = 20.0
+offset_right = 41.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Send Email"
 
 [connection signal="solved" from="WindowManager/Window" to="WindowManager" method="puzzle_solved"]

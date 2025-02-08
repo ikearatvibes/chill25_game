@@ -6,8 +6,8 @@
 script = ExtResource("1_epfyu")
 name = "Test2"
 title = "RE: RE: RE: Vacation Request"
-starting_text = "I will be out tomorrow for vacation. See you soon."
-solved_text = "I See you"
+starting_text = "I will be out tomorrow for vacation. See you soon Jeff."
+solved_text = Array[String](["I See you Jeff."])
 prompt = "In plain sight"
 word_deletes = 7
 word_moves = 0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Puzzle" load_steps=2 format=3 uid="uid://tyonv3ryqsmv"]
+
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="1_kxwa8"]
+
+[resource]
+script = ExtResource("1_kxwa8")
+name = "malaysia"
+title = "ASAP: App Update"
+starting_text = "The app you and I wrote blew up in Malaysia yesterday, give me a call :)"
+solved_text = Array[String](["I blew up Malaysia :)", "I blew up Malaysia yesterday, :)"])
+prompt = ""
+word_deletes = 11
+word_moves = 0

@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://cb7eoklmootph"]
+[gd_scene load_steps=16 format=3 uid="uid://cb7eoklmootph"]
 
 [ext_resource type="Theme" uid="uid://duowea83rtf4k" path="res://Materials/Themes/overall_theme.tres" id="1_n45td"]
 [ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="2_kjttx"]
 [ext_resource type="Script" path="res://Scenes/Windows/window.gd" id="2_vsia7"]
+[ext_resource type="Texture2D" uid="uid://bvd3e0mjswgaj" path="res://Assets/fullscreen.png" id="3_afwt7"]
+[ext_resource type="Texture2D" uid="uid://dhf0multaaqr2" path="res://Assets/minimize.png" id="3_ar7u7"]
+[ext_resource type="Texture2D" uid="uid://byr4biejuakkj" path="res://Assets/x.png" id="3_vcefo"]
 [ext_resource type="PackedScene" uid="uid://sn52youg6fgd" path="res://Scenes/removalUI.tscn" id="5_1vcwc"]
 [ext_resource type="Texture2D" uid="uid://bah1t6jnhk5pw" path="res://Assets/x_testing.png" id="5_bjh7j"]
+[ext_resource type="Texture2D" uid="uid://bth5xmq6nbufd" path="res://Assets/mail.png" id="6_br407"]
 [ext_resource type="Texture2D" uid="uid://ca1fcrldr5u0s" path="res://Assets/move_testing.png" id="6_sie1r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o20wa"]
@@ -94,6 +98,56 @@ offset_bottom = 40.0
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ug2u")
+
+[node name="window_options" type="HBoxContainer" parent="Background/WindowTop"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_right = -30.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="minimize" type="TextureRect" parent="Background/WindowTop/window_options"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_ar7u7")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="fullscreen" type="TextureRect" parent="Background/WindowTop/window_options"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_afwt7")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="X" type="TextureRect" parent="Background/WindowTop/window_options"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_vcefo")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MailIcon" type="TextureRect" parent="Background/WindowTop"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 25.0
+offset_top = -5.0
+offset_right = 70.0
+offset_bottom = 35.0
+texture = ExtResource("6_br407")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Email" type="VBoxContainer" parent="Background"]
 layout_mode = 1
@@ -186,9 +240,9 @@ color = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 0.2
-offset_left = -110.0
+offset_left = -130.0
 offset_top = 50.0
-offset_right = -10.0
+offset_right = -50.0
 offset_bottom = 40.0
 theme_override_constants/separation = 15
 

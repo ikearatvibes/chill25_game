@@ -109,12 +109,21 @@ func setup_removal_ui(ui : RemovalUI, amount : int):
 #~~~~~Puzzle Checking~~~~~
 
 func words_updated():
-	var split_solution = current_puzzle.solved_text.split(" ") as Array
-	
-	#compare body with solution
-	if current_body == split_solution:
-		print("Solved!")
-		solved.emit()
+	for solution in current_puzzle.solved_text:
+		var split_solution = solution.split(" ") as Array
+		
+		#lowercase everything
+		for i in range(split_solution.size()): split_solution[i] = split_solution[i].to_lower()
+		var current_copy = []
+		for i in current_body: current_copy.append(i.to_lower())
+		
+		#compare body with solution
+		if current_copy == split_solution:
+			print("Solved!")
+			solved.emit()
+			return
+		#else:
+			#print("%s != %s" % [current_copy, split_solution])
 
 #~~~~~Word interaction~~~~~
 
