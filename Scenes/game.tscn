@@ -1,5 +1,14 @@
-[gd_scene format=3 uid="uid://b6aqsqnku85i3"]
+[gd_scene load_steps=2 format=3 uid="uid://b6aqsqnku85i3"]
+
+[ext_resource type="PackedScene" uid="uid://cb7eoklmootph" path="res://Scenes/window.tscn" id="1_cmsv7"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" parent="." instance=ExtResource("1_cmsv7")]
+layout_mode = 1

@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb7eoklmootph"]
+[gd_scene load_steps=10 format=3 uid="uid://cb7eoklmootph"]
 
 [ext_resource type="Theme" uid="uid://duowea83rtf4k" path="res://Materials/Themes/overall_theme.tres" id="1_n45td"]
+[ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="2_kjttx"]
+[ext_resource type="Script" path="res://Scenes/window.gd" id="2_vsia7"]
+[ext_resource type="Resource" uid="uid://ct156rbcf6i0g" path="res://Materials/Puzzles/testing/Test1Puzzle.tres" id="3_l8qri"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o20wa"]
 bg_color = Color(1, 0.915643, 0.870732, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -14,6 +22,11 @@ shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ug2u"]
 bg_color = Color(0.884729, 0.563462, 0.481092, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 
@@ -25,7 +38,24 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 0.47451)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyd87"]
+bg_color = Color(0, 0, 0, 0.47451)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.47451)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6ya3"]
+bg_color = Color(0.6, 0.6, 0.6, 0.282353)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="Window" type="Control"]
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +63,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_n45td")
+script = ExtResource("2_vsia7")
+current_puzzle = ExtResource("3_l8qri")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -43,23 +75,73 @@ anchor_right = 0.85
 anchor_bottom = 0.85
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o20wa")
 
 [node name="WindowTop" type="Panel" parent="Background"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = 40.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ug2u")
 
-[node name="HeaderLine" type="Panel" parent="Background/WindowTop"]
+[node name="Email" type="VBoxContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.025
-anchor_top = 1.25
-anchor_right = 0.975
-anchor_bottom = 2.25
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 45.0
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="HeaderLine" type="Panel" parent="Background/Email"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sqoxp")
+
+[node name="TitleText" parent="Background/Email/HeaderLine" instance=ExtResource("2_kjttx")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RE: Email"
+label_text = "RE: Email"
+
+[node name="HSeparator" type="HSeparator" parent="Background/Email"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_dyd87")
+
+[node name="Body" type="Panel" parent="Background/Email"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6ya3")
+
+[node name="BodyWordContainer" type="HFlowContainer" parent="Background/Email/Body"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 7
