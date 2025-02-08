@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Puzzle" load_steps=2 format=3 uid="uid://bdj0t4hwgm6vo"]
+
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="1_5dnak"]
+
+[resource]
+script = ExtResource("1_5dnak")
+name = "Test3"
+title = "Golfing?"
+starting_text = "Hey boss. I love golfing and I would hate to go without you. Join me this weekend?"
+solved_text = "Hey boss. I love golfing and I hate you. Join me this weekend?"
+prompt = ""
+word_deletes = 4
+letter_deletes = 0

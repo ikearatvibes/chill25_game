@@ -1,5 +1,5 @@
 @tool
-extends Panel
+extends Button
 class_name RemovalUI
 
 @onready var removal_img: TextureRect = $Hbox/RemovalImg

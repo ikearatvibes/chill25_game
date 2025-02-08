@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6aqsqnku85i3"]
+[gd_scene load_steps=8 format=3 uid="uid://b6aqsqnku85i3"]
 
-[ext_resource type="PackedScene" uid="uid://cb7eoklmootph" path="res://Scenes/window.tscn" id="1_cmsv7"]
+[ext_resource type="Script" path="res://Scenes/Windows/window_manager.gd" id="1_2r07c"]
+[ext_resource type="PackedScene" uid="uid://cb7eoklmootph" path="res://Scenes/Windows/window.tscn" id="1_cmsv7"]
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_ihet3"]
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="3_aj0kh"]
+[ext_resource type="Resource" uid="uid://ct156rbcf6i0g" path="res://Materials/Puzzles/testing/Test1Puzzle.tres" id="4_ya17i"]
+[ext_resource type="Resource" uid="uid://cn8gss8d2dg45" path="res://Materials/Puzzles/testing/Test2Puzzle.tres" id="5_koc2f"]
+[ext_resource type="Resource" uid="uid://bdj0t4hwgm6vo" path="res://Materials/Puzzles/testing/Test3Puzzle.tres" id="6_y3jhq"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -9,6 +15,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ihet3")
 
-[node name="Window" parent="." instance=ExtResource("1_cmsv7")]
+[node name="WindowManager" type="Control" parent="."]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2r07c")
+puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("4_ya17i"), ExtResource("5_koc2f"), ExtResource("6_y3jhq")])
+
+[node name="Window" parent="WindowManager" instance=ExtResource("1_cmsv7")]
+layout_mode = 1
+
+[connection signal="solved" from="WindowManager/Window" to="WindowManager" method="puzzle_solved"]
