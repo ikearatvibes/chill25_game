@@ -8,5 +8,5 @@ name = "Testing 1"
 title = "RE: RE: Testing"
 starting_text = "Hello! I am testing! Thanks!"
 solved_text = "I am testing! Thanks!"
-word_deletes = 0
+word_deletes = 1
 letter_deletes = 0

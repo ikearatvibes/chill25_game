@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://sn52youg6fgd"]
+
+[ext_resource type="Texture2D" uid="uid://bah1t6jnhk5pw" path="res://Assets/x_testing.png" id="1_ribsu"]
+[ext_resource type="Theme" uid="uid://duowea83rtf4k" path="res://Materials/Themes/overall_theme.tres" id="1_xc0y1"]
+[ext_resource type="Script" path="res://Scenes/removal_ui.gd" id="2_v4m3l"]
+[ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="2_xgrot"]
+
+[node name="RemovalUI" type="Panel"]
+custom_minimum_size = Vector2(100, 50)
+theme = ExtResource("1_xc0y1")
+script = ExtResource("2_v4m3l")
+
+[node name="Hbox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RemovalImg" type="TextureRect" parent="Hbox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_ribsu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="UsableRichText" parent="Hbox" instance=ExtResource("2_xgrot")]
+layout_mode = 2
+text = "- 1 "
+label_text = "- 1 "
+default_text_bbcode = "[center]%s[/center]"

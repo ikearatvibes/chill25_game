@@ -18,5 +18,6 @@ config/icon="res://icon.svg"
 [file_customization]
 
 folder_colors={
+"res://Assets/": "purple",
 "res://Materials/": "green"
 }
