@@ -1,12 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6aqsqnku85i3"]
+[gd_scene load_steps=12 format=3 uid="uid://b6aqsqnku85i3"]
 
 [ext_resource type="Script" path="res://Scenes/Windows/window_manager.gd" id="1_2r07c"]
 [ext_resource type="PackedScene" uid="uid://cb7eoklmootph" path="res://Scenes/Windows/window.tscn" id="1_cmsv7"]
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_ihet3"]
+[ext_resource type="Shader" path="res://Materials/Shaders/background.gdshader" id="2_vguof"]
 [ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="3_aj0kh"]
 [ext_resource type="Resource" uid="uid://ct156rbcf6i0g" path="res://Materials/Puzzles/testing/Test1Puzzle.tres" id="4_ya17i"]
 [ext_resource type="Resource" uid="uid://cn8gss8d2dg45" path="res://Materials/Puzzles/testing/Test2Puzzle.tres" id="5_koc2f"]
 [ext_resource type="Resource" uid="uid://bdj0t4hwgm6vo" path="res://Materials/Puzzles/testing/Test3Puzzle.tres" id="6_y3jhq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rek5k"]
+shader = ExtResource("2_vguof")
+shader_parameter/time_mult = 1.0
+
+[sub_resource type="Curve" id="Curve_wayp8"]
+max_value = 2.0
+_data = [Vector2(0, 1.14894), 0.0, 0.0, 0, 0, Vector2(0.913725, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_axt8n"]
+offsets = PackedFloat32Array(0, 0.229075, 0.462555, 0.682819, 0.933921)
+colors = PackedColorArray(0.99, 0.0396, 0.38808, 1, 0.861963, 0.688267, 0.267656, 1, 0.700333, 1, 0.42, 1, 0.4356, 0.99, 0.88836, 1, 0.5742, 0.2772, 0.99, 1)
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -16,6 +30,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ihet3")
+
+[node name="Background" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_rek5k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="WindowManager" type="Control" parent="."]
 layout_mode = 1
@@ -29,5 +52,43 @@ puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("4_ya17i"), ExtR
 
 [node name="Window" parent="WindowManager" instance=ExtResource("1_cmsv7")]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="ParticlePlacer" type="Control" parent="WindowManager"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="WindowManager/ParticlePlacer"]
+position = Vector2(20, 20)
+emitting = false
+amount = 100
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.3
+lifetime_randomness = 0.6
+direction = Vector2(0, -1)
+gravity = Vector2(0, 2000)
+initial_velocity_max = 1600.0
+scale_amount_min = 2.5
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_wayp8")
+color_ramp = SubResource("Gradient_axt8n")
 
 [connection signal="solved" from="WindowManager/Window" to="WindowManager" method="puzzle_solved"]

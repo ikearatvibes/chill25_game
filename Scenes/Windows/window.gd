@@ -13,6 +13,7 @@ var current_body_objects : Array[UsableRichText]
 @onready var body_word_container: HFlowContainer = $Background/Email/Body/BodyWordContainer
 
 @onready var title_text: UsableRichText = $Background/Email/HeaderLine/TitleText
+@onready var prompt: UsableRichText = $Background/Prompt
 
 #removal
 var currently_selected_removal : RemovalUI = null
@@ -46,6 +47,9 @@ func load_puzzle(new_puzzle : Puzzle):
 	
 	#load removal amounts
 	load_editing_amounts()
+	
+	#load the prompt/hint text
+	load_prompt()
 
 func restart_puzzle():
 	load_puzzle(current_puzzle)
@@ -75,6 +79,7 @@ func load_body_words():
 		word_object.label_text = word
 		#connect clicked signal
 		word_object.word_pressed.connect(word_clicked)
+		word_object.place_text_before.connect(place_word_before)
 
 func remove_body_objects():
 	while current_body_objects.size() > 0:
@@ -94,6 +99,9 @@ func load_editing_amounts():
 	if word_moves == 0: word_moving.visible = false
 	else: setup_removal_ui(word_moving, word_moves)
 
+func load_prompt():
+	prompt.label_text = current_puzzle.prompt
+
 func setup_removal_ui(ui : RemovalUI, amount : int):
 	ui.visible = true
 	ui.amount = amount
@@ -111,9 +119,37 @@ func words_updated():
 #~~~~~Word interaction~~~~~
 
 func word_clicked(word : UsableRichText):
-	
 	if removing_words: delete_word(word)
 
+func place_word_before(place_before : UsableRichText, word : UsableRichText):
+	var placement_index = 0
+	for i in current_body_objects:
+		if i == place_before: break
+		
+		placement_index += 1
+	
+	print("Placing word @ " + str(placement_index))
+	
+	body_word_container.move_child(word, placement_index)
+	
+	current_body_objects.erase(word)
+	current_body_objects.insert(placement_index, word)
+	
+	var word_word = word.label_text
+	
+	current_body.erase(word_word)
+	current_body.insert(placement_index, word_word)
+	
+	#manage word moves
+	
+	word_moves -= 1
+	word_moving.amount = word_moves
+	if word_moves == 0:
+		word_moving.button_pressed = false
+		word_moving.visible = false
+		_on_word_move_toggled(false)
+	
+	words_updated()
 
 func delete_word(word : UsableRichText):
 	#skip if no removals
@@ -169,7 +205,12 @@ func _on_word_move_toggled(toggled_on: bool) -> void:
 	else:
 		moving_words = false
 		editing = false
+	
+	set_draggable_state(moving_words)
 
+func set_draggable_state(on : bool):
+	for word in current_body_objects:
+		word.draggable = on
 
 #~~~~~Restart~~~~~
 func _on_restart_button_pressed() -> void:

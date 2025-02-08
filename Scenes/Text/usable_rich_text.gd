@@ -2,7 +2,10 @@
 extends Button
 class_name UsableRichText
 
-signal word_pressed(word : UsableRichText)
+var dragging = false
+var draggable = false
+
+signal word_pressed(placement_word : UsableRichText, new_word : UsableRichText)
 
 @onready var rich_text_label: RichTextLabel = $RichTextLabel
 
@@ -19,7 +22,7 @@ signal word_pressed(word : UsableRichText)
 		if !is_inside_tree(): return #skip if not loaded
 		change_text_sizes(text_size)
 
-@export_multiline var default_text_bbcode : String = "%s":
+@export_multiline var default_text_bbcode : String = "[wave amp=10.0 freq=.25 connected=1]%s[/wave]":
 	set(value):
 		default_text_bbcode = value
 		#reset text with new bbcode
@@ -39,6 +42,10 @@ signal word_pressed(word : UsableRichText)
 		if !is_inside_tree(): return #skip if not loaded
 		rich_text_label.add_theme_color_override("default_color", color)
 
+const USABLE_RICH_TEXT = preload("res://Scenes/Text/usable_rich_text.tscn")
+
+signal place_text_before(new_text : UsableRichText)
+
 func _ready() -> void:
 	rich_text_label.text = default_text_bbcode % label_text
 	change_text_sizes(text_size)
@@ -53,6 +60,39 @@ func change_text_sizes(new_size : int):
 	rich_text_label.add_theme_font_size_override("italics_font_size", new_size)
 	rich_text_label.add_theme_font_size_override("bold_font_size", new_size)
 
+#~~~~~Dragging~~~~~
+
+func _get_drag_data(at_position: Vector2) -> Variant:
+	if !draggable: return
+	
+	var text = USABLE_RICH_TEXT.instantiate()
+	text.label_text = label_text
+	text.text_size = text_size
+	
+	var preview = Control.new()
+	preview.size = Vector2(30, 30)
+	
+	preview.add_child(text)
+	
+	set_drag_preview(preview)
+	
+	rich_text_label.text = ""
+	text = ""
+	
+	dragging = true
+	
+	return self
+
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	return data is UsableRichText
+
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	place_text_before.emit(self, data)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_DRAG_END and dragging:
+		label_text = label_text
+		dragging = false
 
 
 func delete():

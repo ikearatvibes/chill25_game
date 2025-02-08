@@ -21,3 +21,6 @@ class_name RemovalUI
 		texture = value
 		if !is_inside_tree(): return
 		removal_img.texture = value
+
+func _ready() -> void:
+	removal_img.texture = texture

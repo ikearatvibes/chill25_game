@@ -4,6 +4,7 @@ extends Control
 var current_puzzle_index : int = 0
 
 @onready var window: PuzzleWindow = $Window
+@onready var cpu_particles_2d: CPUParticles2D = $ParticlePlacer/CPUParticles2D
 
 
 func _ready() -> void:
@@ -15,7 +16,8 @@ func load_next_puzzle():
 
 func puzzle_solved():
 	#put small animation here
-	await get_tree().create_timer(.25).timeout
+	cpu_particles_2d.emitting = true #emit particles
+	await get_tree().create_timer(.5).timeout
 	
 	current_puzzle_index += 1
 	if current_puzzle_index == puzzle_progression.size(): 

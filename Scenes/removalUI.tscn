@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://sn52youg6fgd"]
+[gd_scene load_steps=8 format=3 uid="uid://sn52youg6fgd"]
 
-[ext_resource type="Texture2D" uid="uid://bah1t6jnhk5pw" path="res://Assets/x_testing.png" id="1_ribsu"]
 [ext_resource type="Theme" uid="uid://duowea83rtf4k" path="res://Materials/Themes/overall_theme.tres" id="1_xc0y1"]
 [ext_resource type="Script" path="res://Scenes/removal_ui.gd" id="2_v4m3l"]
 [ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="2_xgrot"]
@@ -85,7 +84,6 @@ alignment = 1
 [node name="RemovalImg" type="TextureRect" parent="Hbox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("1_ribsu")
 expand_mode = 1
 stretch_mode = 4
 
