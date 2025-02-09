@@ -1,5 +1,5 @@
 extends Panel
-@onready var time_text: UsableRichText = $Time/TimeText
+@onready var time_text: UsableRichText = $Time2/TimeText
 
 var time = Time.get_time_dict_from_system()
 

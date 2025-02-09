@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d02tnwla7v5kh"]
+[gd_scene load_steps=8 format=3 uid="uid://d02tnwla7v5kh"]
 
 [ext_resource type="Theme" uid="uid://duowea83rtf4k" path="res://Materials/Themes/overall_theme.tres" id="1_i7qgi"]
 [ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="2_d1yxw"]
 [ext_resource type="Script" path="res://Scenes/taskbar.gd" id="2_ssbim"]
+[ext_resource type="Script" path="res://Scenes/h_slider.gd" id="4_uole7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kit5"]
 bg_color = Color(0.956863, 0.92549, 0.854902, 1)
@@ -23,6 +24,14 @@ border_color = Color(0, 0, 0, 1)
 border_blend = true
 corner_radius_top_right = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28tc4"]
+bg_color = Color(0.6693, 0.814638, 0.97, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [node name="Taskbar" type="Panel"]
 custom_minimum_size = Vector2(0, 30)
 anchors_preset = 12
@@ -37,7 +46,7 @@ theme = ExtResource("1_i7qgi")
 theme_override_styles/panel = SubResource("StyleBoxFlat_1kit5")
 script = ExtResource("2_ssbim")
 
-[node name="Time" type="Panel" parent="."]
+[node name="Time2" type="Panel" parent="."]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 1
 anchors_preset = 3
@@ -45,12 +54,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -100.0
 offset_top = -30.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_id7yo")
 
-[node name="TimeText" parent="Time" instance=ExtResource("2_d1yxw")]
+[node name="TimeText" parent="Time2" instance=ExtResource("2_d1yxw")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,6 +78,50 @@ text = "12:02"
 label_text = "12:02"
 text_size = 20
 
+[node name="Sound" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -15.0
+offset_right = -99.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_28tc4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sound"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = -5.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UsableRichText" parent="Sound/HBoxContainer" instance=ExtResource("2_d1yxw")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sound"
+label_text = "Sound"
+text_size = 20
+
+[node name="HSlider" type="HSlider" parent="Sound/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -25.0
+max_value = 5.0
+step = 0.25
+script = ExtResource("4_uole7")
+
 [node name="AppContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -79,3 +133,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
+
+[connection signal="value_changed" from="Sound/HBoxContainer/HSlider" to="Sound/HBoxContainer/HSlider" method="_on_value_changed"]

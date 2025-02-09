@@ -91,7 +91,7 @@ layout_mode = 1
 offset_right = 350.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 16
-text = "This just in, CEO of Company just insulted himself in an email sent out to millions. And I Quote:[i] \"I'm a stinky idiot, that took down our company, if you have any tips to fix this please reach out.\" Wow! can you believe it?"
+text = "This just in, CEO of Company just insulted himself in an email sent out to millions. And I Quote:[i] \"I'm a stinky idiot, that took down our company, if you have any tips to fix this please reach out.\" [/i] [color=00000052]Wow! can you believe it?[/color]"
 autowrap_mode = 3
 label_text = "This just in, CEO of Company just insulted himself in an email sent out to millions. And I Quote:[i] \"I'm a stinky idiot, that took down our company, if you have any tips to fix this please reach out.\" [/i] [color=00000052]Wow! can you believe it?[/color]"
 text_size = 16
@@ -109,7 +109,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 16
-text = "Is this even legal? Who knows? I mean i cant imagine this not going to court. Well sorry to all vaccuum fans out there or whatever this company sold. I had a nice bagel this morning by the way, I thought id share. More news tonight at 8, please tune into your news station, we will be on all of them! Thanks for reading and all that."
+text = "Is this even legal? Who knows? I mean i cant imagine this not going to court.  [color=00000020]Well sorry to all vaccuum fans out there or whatever this company sold. I had a nice bagel this morning by the way, I thought id share. More news tonight at 8, please tune into your news station, we will be on all of them! Thanks for reading and all that. [/color]"
 autowrap_mode = 3
 label_text = "Is this even legal? Who knows? I mean i cant imagine this not going to court.  [color=00000020]Well sorry to all vaccuum fans out there or whatever this company sold. I had a nice bagel this morning by the way, I thought id share. More news tonight at 8, please tune into your news station, we will be on all of them! Thanks for reading and all that. [/color]"
 text_size = 16
