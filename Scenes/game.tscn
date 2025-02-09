@@ -106,7 +106,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2r07c")
-puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("6_rd4lq"), ExtResource("6_h20ba"), ExtResource("6_y3jhq"), ExtResource("13_v52c1"), ExtResource("7_m8j71"), ExtResource("5_koc2f"), ExtResource("8_6qifb"), ExtResource("5_t51m8"), ExtResource("6_jbqw5"), ExtResource("11_r4lke")])
+puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("6_jbqw5"), ExtResource("6_rd4lq"), ExtResource("6_h20ba"), ExtResource("6_y3jhq"), ExtResource("13_v52c1"), ExtResource("7_m8j71"), ExtResource("5_koc2f"), ExtResource("8_6qifb"), ExtResource("5_t51m8"), ExtResource("11_r4lke")])
 
 [node name="HackerWindow" parent="WindowManager" instance=ExtResource("7_jie1f")]
 layout_mode = 1

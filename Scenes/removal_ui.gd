@@ -5,7 +5,8 @@ class_name RemovalUI
 @onready var removal_img: TextureRect = $Hbox/RemovalImg
 @onready var usable_rich_text: UsableRichText = $Hbox/UsableRichText
 
-var pressed_pos = Vector2(0, 4)
+var pressed_pos = 4
+var pressed_down = false
 
 @export var amount : int = 0:
 	set(value):
@@ -30,18 +31,30 @@ func _ready() -> void:
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		position = pressed_pos
+		if pressed_down: return
+		pressed_down = true
+		position.y += pressed_pos
 	else:
-		position = Vector2.ZERO
+		if !pressed_down: return
+		pressed_down = false
+		position.y -= pressed_pos
 
 func _on_button_down() -> void:
 	if !button_pressed:
-		position = pressed_pos
+		if pressed_down: return
+		pressed_down = true
+		position.y += pressed_pos
 	else:
-		position = Vector2.ZERO
+		if !pressed_down: return
+		pressed_down = false
+		position.y -= pressed_pos
 
 func _on_button_up() -> void:
 	if !button_pressed:
-		position = Vector2.ZERO
+		if !pressed_down: return
+		pressed_down = false
+		position.y -= pressed_pos
 	else:
-		position = pressed_pos
+		if pressed_down: return
+		pressed_down = true
+		position.y += pressed_pos

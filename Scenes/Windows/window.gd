@@ -28,6 +28,9 @@ var editing = false
 var removing_words = false
 var moving_words = false
 
+var remove_was_last_selected = false
+var move_last_selected = false
+
 @onready var word_removal: RemovalUI = $Background/RemovalUIContainer/WordRemoval
 @onready var word_moving: RemovalUI = $Background/RemovalUIContainer/WordMoving
 
@@ -59,6 +62,11 @@ func load_puzzle(new_puzzle : Puzzle):
 	
 	#load the prompt/hint text
 	load_prompt()
+	
+	if (remove_was_last_selected and word_removals != 0):
+		word_removal.button_pressed = true
+	elif word_moves != 0 and move_last_selected:
+		word_moving.button_pressed = true
 
 func restart_puzzle():
 	load_puzzle(current_puzzle)
@@ -161,7 +169,7 @@ func words_updated():
 #~~~~~Word interaction~~~~~
 
 func word_clicked(word : UsableRichText):
-	if removing_words: delete_word(word)
+	if removing_words and !word.deleting: delete_word(word)
 
 func place_word_before(place_before : UsableRichText, word : UsableRichText):
 	var placement_index = current_body_objects.find(place_before)
@@ -170,6 +178,10 @@ func place_word_before(place_before : UsableRichText, word : UsableRichText):
 	#update body array
 	current_body_objects.erase(word)
 	current_body_objects.insert(placement_index, word)
+	
+	for i in range(current_body_objects.size()):
+		if current_body_objects[i] != word:
+			current_body_objects[i].initial_index = i
 
 func word_move_placed(word : UsableRichText):
 	var word_index = current_body_objects.find(word)
@@ -208,9 +220,14 @@ func delete_word(word : UsableRichText):
 	#skip if no removals
 	if word_removals <= 0: return
 	
+	#skip if word is being deleted already
+	if word.deleting: return
+	word.deleting = true
+	
 	#remove word from the object and word containers
-	current_body.erase(word.label_text)
-	current_body_objects.erase(word)
+	var word_index = current_body_objects.find(word)
+	current_body.remove_at(word_index)
+	current_body_objects.remove_at(word_index)
 	
 	#delete the word
 	word.delete()
@@ -222,6 +239,9 @@ func delete_word(word : UsableRichText):
 		word_removal.button_pressed = false
 		word_removal.visible = false
 		_on_word_removal_toggled(false)
+	
+	for i in range(current_body_objects.size()):
+		current_body_objects[i].initial_index = i
 	
 	words_updated()
 	
@@ -250,6 +270,9 @@ func _on_word_removal_toggled(toggled_on: bool) -> void:
 		SignalBus.hint_clicked.emit()
 		delete_hint_clicked = true
 	
+	remove_was_last_selected = true
+	move_last_selected = false
+	
 	removal_ui_clicked(word_removal)
 	
 	if toggled_on:
@@ -263,6 +286,9 @@ func _on_word_removal_toggled(toggled_on: bool) -> void:
 
 func _on_word_move_toggled(toggled_on: bool) -> void:
 	removal_ui_clicked(word_moving)
+	
+	remove_was_last_selected = false
+	move_last_selected = true
 	
 	if toggled_on:
 		removing_words = false

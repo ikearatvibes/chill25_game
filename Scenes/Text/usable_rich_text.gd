@@ -4,6 +4,7 @@ class_name UsableRichText
 
 var dragging = false
 var draggable = false
+var deleting = false
 var initial_index = 0
 
 signal word_pressed(placement_word : UsableRichText, new_word : UsableRichText)
