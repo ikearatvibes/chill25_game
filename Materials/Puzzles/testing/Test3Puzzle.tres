@@ -9,5 +9,7 @@ title = "Golfing?"
 starting_text = "Hey boss. I love golfing and I would hate to go without you. Expect to see me at your door this weekend?"
 solved_text = Array[String](["Hey boss. I love golfing and I hate you. Expect to see me at your door this weekend?"])
 prompt = "Spiteful Golfing"
+hint_words = Array[String](["hate", "you"])
+hint_color = Color(0.0345691, 0.553507, 0, 1)
 word_deletes = 4
 word_moves = 0

@@ -1,0 +1,217 @@
+[gd_scene load_steps=6 format=3 uid="uid://coe5i8votdq1s"]
+
+[ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="1_6ov58"]
+[ext_resource type="Script" path="res://Scenes/Windows/win_newspaper.gd" id="1_ji5gm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxik7"]
+bg_color = Color(0.843184, 0.843184, 0.843184, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2cff"]
+bg_color = Color(0, 0, 0, 0.47451)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.47451)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tn6oe"]
+bg_color = Color(0.73, 0.73, 0.73, 1)
+
+[node name="WinNewspaper" type="Control"]
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ji5gm")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.349066
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxik7")
+
+[node name="Headline" type="Control" parent="Background"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="UsableRichText" parent="Background/Headline" instance=ExtResource("1_6ov58")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.5
+offset_top = 10.0
+offset_right = 214.5
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "BREAKING: CEO Humiliation"
+label_text = "BREAKING: CEO Humiliation"
+
+[node name="HSeparator" type="HSeparator" parent="Background/Headline"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_l2cff")
+
+[node name="Article 1" type="Panel" parent="Background"]
+custom_minimum_size = Vector2(350, 300)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 20.0
+offset_top = 70.0
+offset_right = 200.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tn6oe")
+
+[node name="UsableRichText" parent="Background/Article 1" instance=ExtResource("1_6ov58")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+offset_right = 350.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 16
+text = "This just in, CEO of Company just insulted himself in an email sent out to millions. And I Quote:[i] \"I'm a stinky idiot, that took down our company, if you have any tips to fix this please reach out.\" Wow! can you believe it?"
+autowrap_mode = 3
+label_text = "This just in, CEO of Company just insulted himself in an email sent out to millions. And I Quote:[i] \"I'm a stinky idiot, that took down our company, if you have any tips to fix this please reach out.\" [/i] [color=00000052]Wow! can you believe it?[/color]"
+text_size = 16
+text_autowrap_mode = 3
+
+[node name="UsableRichText2" parent="Background/Article 1" instance=ExtResource("1_6ov58")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -184.0
+offset_right = 350.0
+offset_bottom = 20.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 16
+text = "Is this even legal? Who knows? I mean i cant imagine this not going to court. Well sorry to all vaccuum fans out there or whatever this company sold. I had a nice bagel this morning by the way, I thought id share. More news tonight at 8, please tune into your news station, we will be on all of them! Thanks for reading and all that."
+autowrap_mode = 3
+label_text = "Is this even legal? Who knows? I mean i cant imagine this not going to court.  [color=00000020]Well sorry to all vaccuum fans out there or whatever this company sold. I had a nice bagel this morning by the way, I thought id share. More news tonight at 8, please tune into your news station, we will be on all of them! Thanks for reading and all that. [/color]"
+text_size = 16
+text_autowrap_mode = 3
+color = Color(0, 0, 0, 0.321569)
+
+[node name="Article3" type="Panel" parent="Background/Article 1"]
+clip_contents = true
+custom_minimum_size = Vector2(475, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = 200.0
+offset_right = 225.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tn6oe")
+
+[node name="UsableRichText" parent="Background/Article 1/Article3" instance=ExtResource("1_6ov58")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  ---- -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__  _-- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - -- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---__----- _--- !!!! _-- ________- -------- __ --------------- _-____    ____ __ !!?? ___---  _______ ___-- -__ ---_ ----- --- ___ --"
+autowrap_mode = 3
+label_text = "---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  ---- -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__  _-- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - -- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---__----- _--- !!!! _-- ________- -------- __ --------------- _-____    ____ __ !!?? ___---  _______ ___-- -__ ---_ ----- --- ___ --"
+text_size = 8
+default_text_bbcode = "%s"
+text_autowrap_mode = 3
+
+[node name="Article2" type="Panel" parent="Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 70.0
+offset_right = -10.0
+offset_bottom = 370.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tn6oe")
+
+[node name="UsableRichText" parent="Background/Article2" instance=ExtResource("1_6ov58")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_-_ __-__ _-- ___ ---- ---   ----? ----------. --------- -  ------ -   ----    - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ "
+autowrap_mode = 3
+label_text = "---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_-_ __-__ _-- ___ ---- ---   ----? ----------. --------- -  ------ -   ----    - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ ---- ---   ----? ------ -- ____ ---! ------. --------- -  ------ -   ----  - -  ------- -  ------ - - -----  - - -  -- - --- --  --- ----- - --- - ---- - - -- --- - -- -__ -_ --- -__ --_- ---_ _--- ___ --- __-_-- --_--_! --_-__--- ____ --__ --___- --________--_ __-__ _-- ___ "
+text_size = 8
+default_text_bbcode = "%s"
+text_autowrap_mode = 3
+
+[node name="Article3" type="Panel" parent="Background"]
+clip_contents = true
+custom_minimum_size = Vector2(475, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -100.0
+offset_right = 237.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tn6oe")
+
+[node name="UsableRichText" parent="Background/Article3" instance=ExtResource("1_6ov58")]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.5
+offset_right = 0.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Thanks for playing!"
+autowrap_mode = 3
+label_text = "Thanks for playing!"
+text_size = 48
+default_text_bbcode = "[center][wave amp=30.0 freq=5 connected=1]%s[/wave]"
+text_autowrap_mode = 3

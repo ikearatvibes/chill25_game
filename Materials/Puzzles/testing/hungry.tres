@@ -9,5 +9,7 @@ title = "RE: RE: Purchase Order"
 starting_text = "I’d like to purchase $200,000 of aluminum, and $5 of chips"
 solved_text = Array[String](["I’d like to purchase $200,000 of chips"])
 prompt = "Im Hungy"
+hint_words = Array[String](["aluminum,", "and", "5$"])
+hint_color = Color(1, 0, 0, 1)
 word_deletes = 4
 word_moves = 0

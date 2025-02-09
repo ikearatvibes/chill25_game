@@ -9,5 +9,7 @@ title = "RE: RE: RE: Vacation Request"
 starting_text = "I will be out tomorrow for vacation. See you soon Jeff."
 solved_text = Array[String](["I See you Jeff.", "I will be out for you Jeff.", "I will out you Jeff.", "I will out you soon Jeff.", "I will be out for you soon Jeff."])
 prompt = "In plain sight"
+hint_words = Array[String](["I", "See", "you"])
+hint_color = Color(0.153189, 0.594183, 0, 1)
 word_deletes = 7
 word_moves = 0

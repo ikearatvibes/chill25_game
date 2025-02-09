@@ -6,8 +6,10 @@
 script = ExtResource("1_j3j00")
 name = "Fired"
 title = "RE: RE: RE: RE: Note From CEO"
-starting_text = "You are all the fire that keeps this company running, especially ed!"
-solved_text = Array[String](["You are all fire ed!"])
+starting_text = "Thanks Ed! You are all the fire that keeps this company running!"
+solved_text = Array[String](["You are all fire Ed!"])
 prompt = "Termination"
+hint_words = Array[String](["fire", "Ed!"])
+hint_color = Color(4.40396e-06, 0.568108, 0.0365953, 1)
 word_deletes = 7
-word_moves = 0
+word_moves = 1

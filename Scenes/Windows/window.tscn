@@ -302,6 +302,38 @@ grow_horizontal = 1
 grow_vertical = 1
 hint_clicked_tick = 0
 
+[node name="HintButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 30.0
+offset_top = 125.0
+offset_right = 150.0
+offset_bottom = 103.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_neu62")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_35605")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e8dyr")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_35605")
+theme_override_styles/normal = SubResource("StyleBoxFlat_35605")
+text = "Hint"
+
 [node name="Prompt" parent="Background" instance=ExtResource("2_kjttx")]
 layout_mode = 1
 anchors_preset = -1
@@ -343,5 +375,6 @@ texture = ExtResource("6_sie1r")
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="Background/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Background/HintButton" to="." method="load_hint"]
 [connection signal="toggled" from="Background/RemovalUIContainer/WordRemoval" to="." method="_on_word_removal_toggled"]
 [connection signal="toggled" from="Background/RemovalUIContainer/WordMoving" to="." method="_on_word_move_toggled"]

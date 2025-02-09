@@ -41,6 +41,7 @@ func puzzle_solved():
 	
 	current_puzzle_index += 1
 	if current_puzzle_index == puzzle_progression.size(): 
+		SignalBus.game_finished.emit()
 		print("Game Won!")
 		return
 	

@@ -39,6 +39,7 @@ var word_hint_clicked = false
 var restart_hint_clicked = false
 
 @onready var mouse_indicatior: TextureRect = $Background/RestartButton/MouseIndicatior
+@onready var hint_button: Button = $Background/HintButton
 
 signal solved #calls when solved
 
@@ -67,6 +68,8 @@ func load_puzzle(new_puzzle : Puzzle):
 		word_removal.button_pressed = true
 	elif word_moves != 0 and move_last_selected:
 		word_moving.button_pressed = true
+	
+	hint_button.visible = true
 
 func restart_puzzle():
 	load_puzzle(current_puzzle)
@@ -264,6 +267,16 @@ func removal_ui_clicked(ui : RemovalUI):
 	if ui.button_pressed: currently_selected_removal = ui
 	else: currently_selected_removal = null
 
+func load_hint():
+	restart_puzzle()
+	
+	for word in current_puzzle.hint_words:
+		for word_object in current_body_objects:
+			if word_object.label_text.to_lower() == word.to_lower():
+				word_object.color = current_puzzle.hint_color
+				continue
+	
+	hint_button.visible = false
 
 func _on_word_removal_toggled(toggled_on: bool) -> void:
 	if !delete_hint_clicked: 

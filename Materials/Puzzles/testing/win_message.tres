@@ -4,10 +4,12 @@
 
 [resource]
 script = ExtResource("1_yb7bk")
-name = "Name"
-title = "You Win :)"
-starting_text = "I havent made an end screen yet."
-solved_text = Array[String]([])
-prompt = ""
-word_deletes = 0
-word_moves = 0
+name = "Win message"
+title = "BREAKING NEWS: Company Under!"
+starting_text = "Just now, out of nowhere, Company has filed for bankruptcy. The CEO is quoted saying: \"I'm sure you're all aware of a stinky hacker that took down our company, that idiot, if you have any tips to fix this please reach out\""
+solved_text = Array[String](["Just now, out of nowhere, Company has filed for bankruptcy. The CEO is quoted saying: \"I'm a stinky idiot, that took down our company, if you have any tips to fix this please reach out\""])
+prompt = "Self Reflection"
+hint_words = Array[String](["stinky", "idiot,", "I'm"])
+hint_color = Color(1.68458e-07, 0.512917, 0.00754151, 1)
+word_deletes = 7
+word_moves = 1

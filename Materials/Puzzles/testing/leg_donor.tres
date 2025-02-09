@@ -9,5 +9,7 @@ title = "FWD: Guest Accomodation"
 starting_text = "I will take your bags. Get your legs over here."
 solved_text = Array[String](["I will take your legs"])
 prompt = "Appendage Donor"
+hint_words = Array[String](["take", "legs"])
+hint_color = Color(0.161227, 0.508257, 2.88785e-07, 1)
 word_deletes = 5
 word_moves = 0
