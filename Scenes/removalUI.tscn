@@ -1,48 +1,86 @@
-[gd_scene load_steps=8 format=3 uid="uid://sn52youg6fgd"]
+[gd_scene load_steps=9 format=3 uid="uid://sn52youg6fgd"]
 
 [ext_resource type="Theme" uid="uid://duowea83rtf4k" path="res://Materials/Themes/overall_theme.tres" id="1_xc0y1"]
 [ext_resource type="Script" path="res://Scenes/removal_ui.gd" id="2_v4m3l"]
 [ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="2_xgrot"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iemd5"]
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g52mo"]
+bg_color = Color(1, 0.945098, 0.921569, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.74, 0.675867, 0.6438, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nvuu"]
-bg_color = Color(0.442911, 0.442911, 0.442911, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8, 0.096, 0.096, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7okj"]
+bg_color = Color(1, 0.945098, 0.921569, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.74, 0.675867, 0.6438, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q72pl"]
-bg_color = Color(0.48, 0.48, 0.48, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8ofe"]
+bg_color = Color(1, 0.946667, 0.92, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.95, 0.8968, 0.874, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ited"]
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8, 0.096, 0.096, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mbee"]
+bg_color = Color(1, 0.913725, 0.870588, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.74, 0.675867, 0.6438, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke3cx"]
+bg_color = Color(1, 0.913725, 0.870588, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.74, 0.675867, 0.6438, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
 
 [node name="RemovalUI" type="Button"]
 custom_minimum_size = Vector2(125, 50)
-offset_right = 100.0
+offset_right = 125.0
 offset_bottom = 50.0
 focus_mode = 0
 theme = ExtResource("1_xc0y1")
@@ -59,16 +97,14 @@ theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_iemd5")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_iemd5")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_5nvuu")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5nvuu")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_q72pl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_q72pl")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_iemd5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0ited")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_iemd5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_iemd5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_g52mo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_w7okj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_y8ofe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y8ofe")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_1mbee")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1mbee")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ke3cx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ke3cx")
 toggle_mode = true
 script = ExtResource("2_v4m3l")
 
@@ -93,3 +129,7 @@ mouse_filter = 1
 text = "- 1 "
 label_text = "- 1 "
 default_text_bbcode = "[center]%s[/center]"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

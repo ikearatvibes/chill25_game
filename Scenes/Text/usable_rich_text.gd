@@ -4,6 +4,7 @@ class_name UsableRichText
 
 var dragging = false
 var draggable = false
+var initial_index = 0
 
 signal word_pressed(placement_word : UsableRichText, new_word : UsableRichText)
 
@@ -45,6 +46,7 @@ signal word_pressed(placement_word : UsableRichText, new_word : UsableRichText)
 const USABLE_RICH_TEXT = preload("res://Scenes/Text/usable_rich_text.tscn")
 
 signal place_text_before(new_text : UsableRichText)
+signal drag_ended(word : UsableRichText)
 
 func _ready() -> void:
 	rich_text_label.text = default_text_bbcode % label_text
@@ -77,14 +79,18 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	set_drag_preview(preview)
 	
 	rich_text_label.text = ""
-	text = ""
+	#text = ""
 	
 	dragging = true
 	
 	return self
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	return data is UsableRichText
+	if data is UsableRichText and data != self:
+		if data.draggable:
+			data.place_text_before.emit(self, data)
+			return true
+	return false
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	place_text_before.emit(self, data)
@@ -93,6 +99,7 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END and dragging:
 		label_text = label_text
 		dragging = false
+		drag_ended.emit(self)
 
 
 func delete():

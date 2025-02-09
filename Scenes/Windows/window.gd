@@ -89,6 +89,9 @@ func load_body_words():
 		#connect clicked signal
 		word_object.word_pressed.connect(word_clicked)
 		word_object.place_text_before.connect(place_word_before)
+		word_object.drag_ended.connect(word_move_placed)
+		
+		word_object.initial_index = current_body_objects.size()-1
 
 func remove_body_objects():
 	while current_body_objects.size() > 0:
@@ -162,23 +165,30 @@ func word_clicked(word : UsableRichText):
 
 func place_word_before(place_before : UsableRichText, word : UsableRichText):
 	var placement_index = current_body_objects.find(place_before)
-	var current_index = current_body_objects.find(word)
-	
-	if placement_index > current_index: placement_index -= 1
-	
-	current_body_objects.erase(word)
-	
 	body_word_container.move_child(word, placement_index)
 	
+	#update body array
+	current_body_objects.erase(word)
 	current_body_objects.insert(placement_index, word)
+
+func word_move_placed(word : UsableRichText):
+	var word_index = current_body_objects.find(word)
 	
-	var word_word = word.label_text
+	#skip if placed in same spot
+	if word.initial_index == word_index: 
+		print("Moved to same spot")
+		return
 	
-	current_body.erase(word_word)
-	current_body.insert(placement_index, word_word)
+	#reset initial indexes
+	for i in range(current_body_objects.size()):
+		current_body_objects[i].initial_index = i
+	
+	#redo word lsit
+	current_body.clear()
+	for word_object in current_body_objects: 
+		current_body.append(word_object.label_text)
 	
 	#manage word moves
-	
 	word_moves -= 1
 	word_moving.amount = word_moves
 	if word_moves == 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b6aqsqnku85i3"]
+[gd_scene load_steps=29 format=3 uid="uid://b6aqsqnku85i3"]
 
 [ext_resource type="Script" path="res://Scenes/Windows/window_manager.gd" id="1_2r07c"]
 [ext_resource type="PackedScene" uid="uid://cb7eoklmootph" path="res://Scenes/Windows/window.tscn" id="1_cmsv7"]
@@ -14,6 +14,8 @@
 [ext_resource type="Resource" uid="uid://bu5sf8avjx12m" path="res://Materials/Puzzles/testing/blackmail_threat.tres" id="6_jbqw5"]
 [ext_resource type="Resource" uid="uid://dsjx0mb5jxfus" path="res://Materials/Puzzles/testing/hungry.tres" id="6_rd4lq"]
 [ext_resource type="Resource" uid="uid://bdj0t4hwgm6vo" path="res://Materials/Puzzles/testing/Test3Puzzle.tres" id="6_y3jhq"]
+[ext_resource type="Texture2D" uid="uid://b4hji8x0v4im6" path="res://Assets/hack.png" id="7_h780a"]
+[ext_resource type="PackedScene" uid="uid://da7j83efrsg2d" path="res://Scenes/Windows/hacker_window.tscn" id="7_jie1f"]
 [ext_resource type="Resource" uid="uid://1pmprxwcs0ah" path="res://Materials/Puzzles/testing/drinking.tres" id="7_m8j71"]
 [ext_resource type="Resource" uid="uid://tyonv3ryqsmv" path="res://Materials/Puzzles/testing/malaysia.tres" id="8_6qifb"]
 [ext_resource type="Resource" uid="uid://ctvw1o2oll5vs" path="res://Materials/Puzzles/testing/win_message.tres" id="11_r4lke"]
@@ -28,6 +30,15 @@ shader_parameter/time_mult = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osmu3"]
 bg_color = Color(0.486275, 0.419608, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bw5mr"]
+bg_color = Color(0.211765, 0.431373, 0.164706, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -61,6 +72,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Taskbar" parent="Background" instance=ExtResource("3_y7vem")]
 layout_mode = 1
@@ -78,6 +90,13 @@ window_focus = NodePath("../../../../WindowManager/StonksWindow")
 icon = ExtResource("6_cdw4k")
 text = "Company Stonks"
 
+[node name="AppTaskbar3" parent="Background/Taskbar/AppContainer" index="2" node_paths=PackedStringArray("window_focus") instance=ExtResource("4_vg8jk")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bw5mr")
+window_focus = NodePath("../../../../WindowManager/HackerWindow")
+icon = ExtResource("7_h780a")
+text = "hack.exe"
+
 [node name="WindowManager" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -85,8 +104,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_2r07c")
-puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("6_rd4lq"), ExtResource("6_h20ba"), ExtResource("6_y3jhq"), ExtResource("5_koc2f"), ExtResource("13_v52c1"), ExtResource("5_t51m8"), ExtResource("7_m8j71"), ExtResource("8_6qifb"), ExtResource("6_jbqw5"), ExtResource("11_r4lke")])
+puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("6_rd4lq"), ExtResource("6_h20ba"), ExtResource("6_y3jhq"), ExtResource("13_v52c1"), ExtResource("7_m8j71"), ExtResource("5_koc2f"), ExtResource("8_6qifb"), ExtResource("5_t51m8"), ExtResource("6_jbqw5"), ExtResource("11_r4lke")])
+
+[node name="HackerWindow" parent="WindowManager" instance=ExtResource("7_jie1f")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -150.0
+offset_right = 0.0
+offset_bottom = 150.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="ParticlePlacer" type="Control" parent="WindowManager"]
 layout_mode = 1
@@ -165,10 +199,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 128.0
-offset_bottom = 128.0
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 153.0
+offset_bottom = 133.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -189,10 +223,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 128.0
-offset_bottom = 128.0
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 153.0
+offset_bottom = 133.0
 grow_horizontal = 1
 grow_vertical = 1
 hint_clicked_tick = 2

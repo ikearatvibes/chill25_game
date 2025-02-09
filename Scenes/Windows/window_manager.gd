@@ -4,9 +4,10 @@ extends Control
 var current_puzzle_index : int = 0
 var completion_percent : float = 0
 
+var puzzle_completed = false
+
 @onready var window: PuzzleWindow = $Window
 @onready var cpu_particles_2d: CPUParticles2D = $ParticlePlacer/CPUParticles2D
-
 @onready var next_button: Button = $Window/NextButton
 
 func _ready() -> void:
@@ -16,6 +17,8 @@ func _ready() -> void:
 
 
 func load_next_puzzle():
+	puzzle_completed = false
+	
 	window.load_puzzle(puzzle_progression[current_puzzle_index])
 	MusicManager.play_random_pitch(MusicManager.mail_in)
 	
@@ -26,6 +29,9 @@ func puzzle_solved():
 	cpu_particles_2d.emitting = true #emit particles
 	MusicManager.play_random_pitch(MusicManager.mail_succeed)
 	await get_tree().create_timer(.5).timeout
+	
+	if puzzle_completed: return
+	puzzle_completed = true
 	
 	next_button.visible = true
 	

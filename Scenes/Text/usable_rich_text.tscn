@@ -51,7 +51,7 @@ theme_override_font_sizes/mono_font_size = 32
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
-text = "Text"
+text = "[wave amp=10.0 freq=.25 connected=1]Text[/wave]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://du2vifs8fqviu"]
+[gd_scene load_steps=4 format=3 uid="uid://du2vifs8fqviu"]
 
 [ext_resource type="Script" path="res://Scenes/app_taskbar.gd" id="1_f2cgy"]
-[ext_resource type="Texture2D" uid="uid://bth5xmq6nbufd" path="res://Assets/mail.png" id="1_qhy7b"]
 [ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="3_kaydk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoef1"]
@@ -31,7 +30,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("1_qhy7b")
+size_flags_vertical = 8
 expand_mode = 1
 stretch_mode = 4
 
@@ -39,8 +38,8 @@ stretch_mode = 4
 layout_mode = 2
 mouse_filter = 1
 theme_override_font_sizes/font_size = 16
-text = "Mail"
-label_text = "Mail"
+text = ""
+label_text = ""
 text_size = 16
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

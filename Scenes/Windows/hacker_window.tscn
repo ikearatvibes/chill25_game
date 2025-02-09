@@ -1,0 +1,169 @@
+[gd_scene load_steps=10 format=3 uid="uid://da7j83efrsg2d"]
+
+[ext_resource type="Script" path="res://Scenes/Windows/hacker_window.gd" id="1_5hxe0"]
+[ext_resource type="Texture2D" uid="uid://dhf0multaaqr2" path="res://Assets/minimize.png" id="1_qm4q0"]
+[ext_resource type="Texture2D" uid="uid://bvd3e0mjswgaj" path="res://Assets/fullscreen.png" id="2_776ty"]
+[ext_resource type="Texture2D" uid="uid://byr4biejuakkj" path="res://Assets/x.png" id="3_o20qb"]
+[ext_resource type="Texture2D" uid="uid://bth5xmq6nbufd" path="res://Assets/mail.png" id="4_po7ed"]
+[ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="5_q1u1h"]
+[ext_resource type="Script" path="res://Scenes/Windows/hack_text_randomize.gd" id="6_oim6g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvsgx"]
+bg_color = Color(0.18, 0.16479, 0.1566, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0, 0, 0, 0.309804)
+shadow_size = 10
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r73iu"]
+bg_color = Color(0.212277, 0.43, 0.1634, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+
+[node name="HackerWindow" type="Control"]
+custom_minimum_size = Vector2(350, 300)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 350.0
+offset_bottom = 300.0
+script = ExtResource("1_5hxe0")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvsgx")
+
+[node name="WindowTop" type="Panel" parent="Background"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_r73iu")
+
+[node name="window_options" type="HBoxContainer" parent="Background/WindowTop"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_right = -30.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="minimize" type="TextureRect" parent="Background/WindowTop/window_options"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_qm4q0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="fullscreen" type="TextureRect" parent="Background/WindowTop/window_options"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_776ty")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="X" type="TextureRect" parent="Background/WindowTop/window_options"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_o20qb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MailIcon" type="TextureRect" parent="Background/WindowTop"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 25.0
+offset_top = -5.0
+offset_right = 70.0
+offset_bottom = 35.0
+texture = ExtResource("4_po7ed")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="WindowLabel" parent="Background/WindowTop/MailIcon" instance=ExtResource("5_q1u1h")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -5.0
+offset_right = 162.0
+offset_bottom = 14.0
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 20
+text = "hack.exe"
+label_text = "hack.exe"
+text_size = 20
+
+[node name="TextContainer" type="Control" parent="Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = -10.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("6_oim6g")
+
+[node name="HackText" parent="Background/TextContainer" instance=ExtResource("5_q1u1h")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+text = "10101sdfadfasd"
+autowrap_mode = 3
+label_text = "10101sdfadfasd"
+text_autowrap_mode = 3
+color = Color(0.32608, 0.650274, 0.256233, 1)
+
+[node name="Hack_Refresh_Timer" type="Timer" parent="Background/TextContainer"]
+wait_time = 0.2
+autostart = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="Background/TextContainer/Hack_Refresh_Timer" to="Background/TextContainer" method="_on_hack_refresh_timer_timeout"]

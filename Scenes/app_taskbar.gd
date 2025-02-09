@@ -11,9 +11,7 @@ var mouse_hovering = false
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint(): 
 		return
-	
 	if Input.is_action_just_pressed("ClickWindow") and mouse_hovering:
-		print("Clicked")
 		SignalBus.focus_window.emit(window_focus)
 
 @export var icon : Texture:

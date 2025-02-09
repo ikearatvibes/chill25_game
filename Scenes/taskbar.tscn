@@ -77,4 +77,5 @@ offset_left = 20.0
 offset_top = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+mouse_filter = 2
+theme_override_constants/separation = 10
