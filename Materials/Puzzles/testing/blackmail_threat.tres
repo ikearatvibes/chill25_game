@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Puzzle" load_steps=2 format=3 uid="uid://bu5sf8avjx12m"]
+
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="1_dmo0r"]
+
+[resource]
+script = ExtResource("1_dmo0r")
+name = "Blackmail Picnic"
+title = "RE: Employee Appreciation!"
+starting_text = "Barbara, I remember what you did at the company picnic last year. Or was it this year? I’ll have to pass on tomorrow sadly!! Hurry and take up the promotion Bill is offering to you, I might accidentally reveal it to everyone"
+solved_text = Array[String](["Barbara, I remember what you did at the company picnic last year. pass up the promotion Bill is offering to you, Or I might reveal it to everyone"])
+prompt = "Blackmailed to Pass the Promotion
+"
+word_deletes = 14
+word_moves = 1

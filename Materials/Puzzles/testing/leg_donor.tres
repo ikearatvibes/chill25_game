@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Puzzle" load_steps=2 format=3 uid="uid://bk855p4xnfl28"]
+
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="1_civy4"]
+
+[resource]
+script = ExtResource("1_civy4")
+name = "Name"
+title = "FWD: Guest Accomodation"
+starting_text = "I will take your bags. Get your legs over here."
+solved_text = Array[String](["I will take your legs"])
+prompt = "Appendage Donor"
+word_deletes = 5
+word_moves = 0

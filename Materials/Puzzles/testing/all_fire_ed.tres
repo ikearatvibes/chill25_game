@@ -9,5 +9,5 @@ title = "RE: RE: RE: RE: Note From CEO"
 starting_text = "You are all the fire that keeps this company running, especially ed!"
 solved_text = Array[String](["You are all fire ed!"])
 prompt = "Termination"
-word_deletes = 8
+word_deletes = 7
 word_moves = 0

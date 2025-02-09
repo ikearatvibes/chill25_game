@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Puzzle" load_steps=2 format=3 uid="uid://dsjx0mb5jxfus"]
+
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="1_c0dmp"]
+
+[resource]
+script = ExtResource("1_c0dmp")
+name = "Name"
+title = "RE: RE: Purchase Order"
+starting_text = "I’d like to purchase $200,000 of aluminum, and $5 of chips"
+solved_text = Array[String](["I’d like to purchase $200,000 of chips"])
+prompt = "Im Hungy"
+word_deletes = 4
+word_moves = 0

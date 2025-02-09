@@ -8,6 +8,7 @@
 [node name="UsableRichText" type="Button"]
 offset_right = 67.0
 offset_bottom = 50.0
+size_flags_vertical = 4
 theme = ExtResource("1_8xrip")
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 0)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0)

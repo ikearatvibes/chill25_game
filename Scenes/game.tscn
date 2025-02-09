@@ -1,15 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6aqsqnku85i3"]
+[gd_scene load_steps=22 format=3 uid="uid://b6aqsqnku85i3"]
 
 [ext_resource type="Script" path="res://Scenes/Windows/window_manager.gd" id="1_2r07c"]
 [ext_resource type="PackedScene" uid="uid://cb7eoklmootph" path="res://Scenes/Windows/window.tscn" id="1_cmsv7"]
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_ihet3"]
 [ext_resource type="Shader" path="res://Materials/Shaders/background.gdshader" id="2_vguof"]
 [ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="3_aj0kh"]
+[ext_resource type="PackedScene" uid="uid://d02tnwla7v5kh" path="res://Scenes/taskbar.tscn" id="3_y7vem"]
 [ext_resource type="Resource" uid="uid://cn8gss8d2dg45" path="res://Materials/Puzzles/testing/Test2Puzzle.tres" id="5_koc2f"]
 [ext_resource type="Resource" uid="uid://wksw4y3nkyqq" path="res://Materials/Puzzles/testing/all_fire_ed.tres" id="5_t51m8"]
+[ext_resource type="Resource" uid="uid://bk855p4xnfl28" path="res://Materials/Puzzles/testing/leg_donor.tres" id="6_h20ba"]
+[ext_resource type="Resource" uid="uid://bu5sf8avjx12m" path="res://Materials/Puzzles/testing/blackmail_threat.tres" id="6_jbqw5"]
+[ext_resource type="Resource" uid="uid://dsjx0mb5jxfus" path="res://Materials/Puzzles/testing/hungry.tres" id="6_rd4lq"]
 [ext_resource type="Resource" uid="uid://bdj0t4hwgm6vo" path="res://Materials/Puzzles/testing/Test3Puzzle.tres" id="6_y3jhq"]
 [ext_resource type="Resource" uid="uid://1pmprxwcs0ah" path="res://Materials/Puzzles/testing/drinking.tres" id="7_m8j71"]
 [ext_resource type="Resource" uid="uid://tyonv3ryqsmv" path="res://Materials/Puzzles/testing/malaysia.tres" id="8_6qifb"]
+[ext_resource type="Resource" uid="uid://ctvw1o2oll5vs" path="res://Materials/Puzzles/testing/win_message.tres" id="11_r4lke"]
+[ext_resource type="PackedScene" uid="uid://crbj54we6037k" path="res://Scenes/Windows/stonks_window.tscn" id="12_r8fcj"]
+[ext_resource type="Texture2D" uid="uid://bth5xmq6nbufd" path="res://Assets/mail.png" id="14_2yt2n"]
+[ext_resource type="PackedScene" uid="uid://4xjvif1s8666" path="res://Scenes/mouse_indicatior.tscn" id="18_hg3xb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rek5k"]
 shader = ExtResource("2_vguof")
@@ -42,6 +50,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Taskbar" parent="Background" instance=ExtResource("3_y7vem")]
+layout_mode = 1
+offset_top = 0.0
+
 [node name="WindowManager" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -50,10 +62,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2r07c")
-puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("5_t51m8"), ExtResource("6_y3jhq"), ExtResource("7_m8j71"), ExtResource("5_koc2f"), ExtResource("8_6qifb")])
-
-[node name="Window" parent="WindowManager" instance=ExtResource("1_cmsv7")]
-layout_mode = 1
+puzzle_progression = Array[ExtResource("3_aj0kh")]([ExtResource("6_rd4lq"), ExtResource("6_h20ba"), ExtResource("6_y3jhq"), ExtResource("5_koc2f"), ExtResource("7_m8j71"), ExtResource("5_t51m8"), ExtResource("8_6qifb"), ExtResource("6_jbqw5"), ExtResource("11_r4lke")])
 
 [node name="ParticlePlacer" type="Control" parent="WindowManager"]
 layout_mode = 1
@@ -85,18 +94,82 @@ scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_wayp8")
 color_ramp = SubResource("Gradient_axt8n")
 
-[node name="NextButton" type="Button" parent="WindowManager"]
+[node name="StonksWindow" parent="WindowManager" instance=ExtResource("12_r8fcj")]
+layout_mode = 1
+offset_right = 300.0
+mouse_filter = 0
+
+[node name="Window" parent="WindowManager" instance=ExtResource("1_cmsv7")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.45
+anchor_bottom = 0.45
+
+[node name="NextButton" type="Button" parent="WindowManager/Window"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -41.0
-offset_top = 20.0
-offset_right = 41.0
-offset_bottom = 53.0
-grow_horizontal = 2
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -53.0
+offset_right = -30.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 32
-text = "Send Email"
+text = "Send"
+icon = ExtResource("14_2yt2n")
+expand_icon = true
+
+[node name="Control" type="Control" parent="WindowManager/Window"]
+anchors_preset = 0
+offset_left = -119.895
+offset_top = 56.4
+offset_right = -79.895
+offset_bottom = 96.4
+mouse_filter = 2
+
+[node name="MouseIndicatior" parent="WindowManager/Window/Control" instance=ExtResource("18_hg3xb")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 153.0
+offset_bottom = 133.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control2" type="Control" parent="WindowManager/Window"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 517.0
+offset_top = 120.4
+offset_right = 557.0
+offset_bottom = 160.4
+mouse_filter = 2
+
+[node name="MouseIndicatior" parent="WindowManager/Window/Control2" instance=ExtResource("18_hg3xb")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 153.0
+offset_bottom = 133.0
+grow_horizontal = 1
+grow_vertical = 1
+hint_clicked_tick = 2
 
 [connection signal="solved" from="WindowManager/Window" to="WindowManager" method="puzzle_solved"]

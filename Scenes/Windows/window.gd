@@ -1,4 +1,4 @@
-extends Control
+extends WindowsBase
 class_name PuzzleWindow
 
 var current_puzzle : Puzzle = null
@@ -28,6 +28,8 @@ var moving_words = false
 @onready var word_removal: RemovalUI = $Background/RemovalUIContainer/WordRemoval
 @onready var word_moving: RemovalUI = $Background/RemovalUIContainer/WordMoving
 
+var delete_hint_clicked = false
+var word_hint_clicked = false
 
 signal solved #calls when solved
 
@@ -152,17 +154,15 @@ func word_clicked(word : UsableRichText):
 	if removing_words: delete_word(word)
 
 func place_word_before(place_before : UsableRichText, word : UsableRichText):
-	var placement_index = 0
-	for i in current_body_objects:
-		if i == place_before: break
-		
-		placement_index += 1
+	var placement_index = current_body_objects.find(place_before)
+	var current_index = current_body_objects.find(word)
 	
-	print("Placing word @ " + str(placement_index))
+	if placement_index > current_index: placement_index -= 1
+	
+	current_body_objects.erase(word)
 	
 	body_word_container.move_child(word, placement_index)
 	
-	current_body_objects.erase(word)
 	current_body_objects.insert(placement_index, word)
 	
 	var word_word = word.label_text
@@ -182,6 +182,10 @@ func place_word_before(place_before : UsableRichText, word : UsableRichText):
 	words_updated()
 
 func delete_word(word : UsableRichText):
+	if !word_hint_clicked:
+		word_hint_clicked = true
+		SignalBus.hint_clicked.emit()
+	
 	#skip if no removals
 	if word_removals <= 0: return
 	
@@ -214,6 +218,10 @@ func removal_ui_clicked(ui : RemovalUI):
 
 
 func _on_word_removal_toggled(toggled_on: bool) -> void:
+	if !delete_hint_clicked: 
+		SignalBus.hint_clicked.emit()
+		delete_hint_clicked = true
+	
 	removal_ui_clicked(word_removal)
 	
 	if toggled_on:

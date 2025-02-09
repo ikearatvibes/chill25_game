@@ -84,7 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_o20wa")
 
 [node name="WindowTop" type="Panel" parent="Background"]
@@ -190,6 +190,7 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_dyd87")
 [node name="Body" type="Panel" parent="Background/Email"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6ya3")
 
 [node name="BodyWordContainer" type="HFlowContainer" parent="Background/Email/Body"]
@@ -256,6 +257,8 @@ layout_mode = 2
 amount = 1
 texture = ExtResource("6_sie1r")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="Background/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="toggled" from="Background/RemovalUIContainer/WordRemoval" to="." method="_on_word_removal_toggled"]
 [connection signal="toggled" from="Background/RemovalUIContainer/WordMoving" to="." method="_on_word_move_toggled"]

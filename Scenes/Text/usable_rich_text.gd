@@ -96,6 +96,12 @@ func _notification(what: int) -> void:
 
 
 func delete():
+	var tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "text_size", 1, .2)
+	tween.parallel().tween_property(self, "color", Color.RED, .2)
+	
+	await tween.finished
+	
 	queue_free()
 
 

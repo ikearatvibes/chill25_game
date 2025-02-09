@@ -8,6 +8,6 @@ name = "Driving"
 title = "Well Done Everyone!"
 starting_text = "I am happy to say we won an award! Love you all, be sure to keep drinking water and be safe while driving!"
 solved_text = Array[String](["I love drinking and driving!", "I love drinking while driving!"])
-prompt = "Unsafe"
+prompt = "Unsafe and Irresponsible"
 word_deletes = 18
 word_moves = 0

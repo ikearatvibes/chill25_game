@@ -2,13 +2,16 @@ extends Control
 
 @export var puzzle_progression : Array[Puzzle]
 var current_puzzle_index : int = 0
+var completion_percent : float = 0
 
 @onready var window: PuzzleWindow = $Window
 @onready var cpu_particles_2d: CPUParticles2D = $ParticlePlacer/CPUParticles2D
 
-@onready var next_button: Button = $NextButton
+@onready var next_button: Button = $Window/NextButton
 
 func _ready() -> void:
+	SignalBus.focus_window.connect(focus_window)
+	
 	load_next_puzzle()
 
 
@@ -35,4 +38,16 @@ func puzzle_solved():
 	
 	await window.exit_anim()
 	
+	completion_percent = float(current_puzzle_index) / float(puzzle_progression.size() - 1) #-1 for end message
+	SignalBus.completion_percent_update.emit(completion_percent)
+	
 	load_next_puzzle()
+
+
+func focus_window(window : WindowsBase):
+	var children = get_children()
+	
+	if !children.has(window): return
+	
+	print("Moving child to top layer")
+	move_child(window, -1)

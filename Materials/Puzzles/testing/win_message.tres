@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Puzzle" load_steps=2 format=3 uid="uid://ctvw1o2oll5vs"]
+
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="1_yb7bk"]
+
+[resource]
+script = ExtResource("1_yb7bk")
+name = "Name"
+title = "You Win :)"
+starting_text = "I havent made an end screen yet."
+solved_text = Array[String]([])
+prompt = ""
+word_deletes = 0
+word_moves = 0

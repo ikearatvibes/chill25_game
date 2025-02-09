@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnmaybq1ildmd"]
+
+[ext_resource type="Script" path="res://Scenes/stock_pip.gd" id="1_okm7n"]
+
+[sub_resource type="Gradient" id="Gradient_v18uc"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.138075, 0.25523, 0.343096, 0.460251, 0.564854, 0.711297, 0.790795, 0.912134, 0.995816)
+colors = PackedColorArray(0, 1, 0, 1, 0.464144, 0.912034, 0.00524741, 1, 0.615439, 0.825147, 0.00924996, 1, 0.686099, 0.765838, 0.0113708, 1, 0.761544, 0.681197, 0.0136291, 1, 0.813782, 0.601813, 0.015037, 1, 0.871103, 0.476542, 0.016144, 1, 0.895261, 0.398767, 0.0163342, 1, 0.924491, 0.246913, 0.0161259, 1, 0.94, 0, 0.0156664, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuos7"]
+bg_color = Color(0.331275, 0.704131, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="stonk_pip" type="Control"]
+custom_minimum_size = Vector2(7, 50)
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_okm7n")
+pip_gradient = SubResource("Gradient_v18uc")
+
+[node name="pip" type="Panel" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_kuos7")
