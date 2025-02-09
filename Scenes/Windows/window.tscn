@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cb7eoklmootph"]
+[gd_scene load_steps=17 format=3 uid="uid://cb7eoklmootph"]
 
 [ext_resource type="Theme" uid="uid://duowea83rtf4k" path="res://Materials/Themes/overall_theme.tres" id="1_n45td"]
 [ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="2_kjttx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bah1t6jnhk5pw" path="res://Assets/x_testing.png" id="5_bjh7j"]
 [ext_resource type="Texture2D" uid="uid://bth5xmq6nbufd" path="res://Assets/mail.png" id="6_br407"]
 [ext_resource type="Texture2D" uid="uid://ca1fcrldr5u0s" path="res://Assets/move_testing.png" id="6_sie1r"]
+[ext_resource type="PackedScene" uid="uid://4xjvif1s8666" path="res://Scenes/mouse_indicatior.tscn" id="10_m63xr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o20wa"]
 bg_color = Color(1, 0.915643, 0.870732, 1)
@@ -218,6 +219,16 @@ offset_bottom = 53.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 32
 text = "Restart"
+
+[node name="MouseIndicatior" parent="Background/RestartButton" instance=ExtResource("10_m63xr")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+offset_left = -35.0
+offset_top = -21.5
+offset_right = 92.9997
+offset_bottom = 106.5
+hint_clicked_tick = 0
 
 [node name="Prompt" parent="Background" instance=ExtResource("2_kjttx")]
 layout_mode = 1

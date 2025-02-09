@@ -6,9 +6,9 @@
 script = ExtResource("1_dmo0r")
 name = "Blackmail Picnic"
 title = "RE: Employee Appreciation!"
-starting_text = "Barbara, I remember what you did at the company picnic last year. Or was it this year? I’ll have to pass on tomorrow sadly!! Hurry and take up the promotion Bill is offering to you, I might accidentally reveal it to everyone"
-solved_text = Array[String](["Barbara, I remember what you did at the company picnic last year. pass up the promotion Bill is offering to you, Or I might reveal it to everyone"])
+starting_text = "Barbara, I remember what you did at the company picnic last year. I’ll have to pass on tomorrow sadly!! Hurry and take up the promotion Bill is offering to you, I might accidentally reveal it to everyone"
+solved_text = Array[String](["Barbara, I remember what you did at the company picnic last year. pass up the promotion Bill is offering to you, Or I might reveal it to everyone", "Barbara, I remember what you did at the company picnic last year. Hurry and pass up the promotion Bill is offering to you, I might reveal it to everyone", "Barbara, I remember what you did at the company picnic last year. pass up the promotion Bill is offering you, Or I might accidentally reveal it to everyone"])
 prompt = "Blackmailed to Pass the Promotion
 "
-word_deletes = 14
+word_deletes = 9
 word_moves = 1

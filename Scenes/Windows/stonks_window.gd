@@ -1,7 +1,7 @@
 extends WindowsBase
 
 var completion_percent : float = 0
-var y_variation : float = .15
+var y_variation : float = .05
 var stonk_pos : Array[float] = []
 var pips : Array[Control] = []
 var max_pips : int = 35

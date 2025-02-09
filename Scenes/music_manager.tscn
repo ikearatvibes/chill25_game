@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://duk20fdbyqrnt"]
+
+[ext_resource type="Script" path="res://Scenes/music_manager.gd" id="1_lyajr"]
+[ext_resource type="AudioStream" uid="uid://5osdwtvuta7p" path="res://Assets/sound/coverless-book-lofi-186307.mp3" id="2_rrf7s"]
+[ext_resource type="AudioStream" uid="uid://crxwlgm3rgiau" path="res://Assets/sound/mouse-click-290204.mp3" id="3_rs02q"]
+[ext_resource type="AudioStream" uid="uid://bes5bhjli7vs5" path="res://Assets/sound/woosh-230554.mp3" id="4_noqkc"]
+[ext_resource type="AudioStream" uid="uid://c5xbvw1g1h8q1" path="res://Assets/sound/system-notification-199277.mp3" id="5_e6jro"]
+[ext_resource type="AudioStream" uid="uid://bkojahaaepe7w" path="res://Assets/sound/new-positive-notice-161930.mp3" id="6_08snj"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_lyajr")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rrf7s")
+autoplay = true
+bus = &"BGM"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rs02q")
+volume_db = -5.0
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="MailOut" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_noqkc")
+
+[node name="MailIn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_e6jro")
+volume_db = 5.0
+
+[node name="MailSucceed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_08snj")
+volume_db = 5.0

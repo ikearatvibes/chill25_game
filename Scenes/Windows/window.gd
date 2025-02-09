@@ -2,6 +2,7 @@ extends WindowsBase
 class_name PuzzleWindow
 
 var current_puzzle : Puzzle = null
+var solved_puzzle = false
 
 #texts
 var current_body : Array[String] = []:
@@ -15,6 +16,8 @@ var current_body_objects : Array[UsableRichText]
 @onready var title_text: UsableRichText = $Background/Email/HeaderLine/TitleText
 @onready var prompt: UsableRichText = $Background/Prompt
 @onready var background: Panel = $Background
+
+var undo_actions : Dictionary #{#add/move, [word, index]}
 
 #removal
 var currently_selected_removal : RemovalUI = null
@@ -30,17 +33,20 @@ var moving_words = false
 
 var delete_hint_clicked = false
 var word_hint_clicked = false
+var restart_hint_clicked = false
+
+@onready var mouse_indicatior: TextureRect = $Background/RestartButton/MouseIndicatior
 
 signal solved #calls when solved
 
 const USABLE_RICH_TEXT = preload("res://Scenes/Text/usable_rich_text.tscn")
-
 
 #~~~~~Setup~~~~~
 
 #loads a puzzle
 func load_puzzle(new_puzzle : Puzzle):
 	current_puzzle = new_puzzle
+	solved_puzzle = false
 	
 	#load the body words
 	load_body_words()
@@ -143,6 +149,7 @@ func words_updated():
 		#compare body with solution
 		if current_copy == split_solution:
 			print("Solved!")
+			solved_puzzle = true
 			solved.emit()
 			return
 		#else:
@@ -180,6 +187,8 @@ func place_word_before(place_before : UsableRichText, word : UsableRichText):
 		_on_word_move_toggled(false)
 	
 	words_updated()
+	
+	check_if_failed()
 
 func delete_word(word : UsableRichText):
 	if !word_hint_clicked:
@@ -205,6 +214,15 @@ func delete_word(word : UsableRichText):
 		_on_word_removal_toggled(false)
 	
 	words_updated()
+	
+	check_if_failed()
+
+func check_if_failed():
+	if word_removals == 0 and word_moves == 0 and !solved_puzzle:
+		prompt.label_text = "Not bad enough, retry?"
+		if !restart_hint_clicked: 
+			SignalBus.hint_clicked.emit()
+			mouse_indicatior.visible = true
 
 #~~~~~Toggle Removals~~~~~
 func removal_ui_clicked(ui : RemovalUI):
@@ -252,4 +270,9 @@ func set_draggable_state(on : bool):
 
 #~~~~~Restart~~~~~
 func _on_restart_button_pressed() -> void:
+	if mouse_indicatior.visible:
+		restart_hint_clicked = true
+		mouse_indicatior.visible = false
+		SignalBus.hint_clicked.emit()
+	
 	restart_puzzle()

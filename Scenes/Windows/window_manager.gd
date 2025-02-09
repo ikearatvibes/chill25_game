@@ -17,12 +17,14 @@ func _ready() -> void:
 
 func load_next_puzzle():
 	window.load_puzzle(puzzle_progression[current_puzzle_index])
+	MusicManager.play_random_pitch(MusicManager.mail_in)
 	
 	await window.enter_anim()
 
 func puzzle_solved():
 	#put small animation here
 	cpu_particles_2d.emitting = true #emit particles
+	MusicManager.play_random_pitch(MusicManager.mail_succeed)
 	await get_tree().create_timer(.5).timeout
 	
 	next_button.visible = true
@@ -36,6 +38,7 @@ func puzzle_solved():
 		print("Game Won!")
 		return
 	
+	MusicManager.play_random_pitch(MusicManager.mail_out)
 	await window.exit_anim()
 	
 	completion_percent = float(current_puzzle_index) / float(puzzle_progression.size() - 1) #-1 for end message

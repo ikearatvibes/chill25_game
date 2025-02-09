@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Puzzle" load_steps=2 format=3 uid="uid://o5br0nnjd5l5"]
+
+[ext_resource type="Script" path="res://Materials/Puzzles/PuzzleResource.gd" id="1_bokcc"]
+
+[resource]
+script = ExtResource("1_bokcc")
+name = "ChipShippingMistake"
+title = "Chip Shipping Mistake"
+starting_text = "I'm sorry, this ordeal is not on you. Come to my office."
+solved_text = Array[String](["I'm not sorry, this ordeal is on you. Come to my office."])
+prompt = "Shifting Blame"
+word_deletes = 0
+word_moves = 1

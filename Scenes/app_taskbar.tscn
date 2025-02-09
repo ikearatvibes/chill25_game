@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://du2vifs8fqviu"]
+
+[ext_resource type="Script" path="res://Scenes/app_taskbar.gd" id="1_f2cgy"]
+[ext_resource type="Texture2D" uid="uid://bth5xmq6nbufd" path="res://Assets/mail.png" id="1_qhy7b"]
+[ext_resource type="PackedScene" uid="uid://ct3tfncha3soj" path="res://Scenes/Text/usable_rich_text.tscn" id="3_kaydk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoef1"]
+bg_color = Color(0.886275, 0.564706, 0.482353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[node name="AppTaskbar" type="Panel"]
+custom_minimum_size = Vector2(200, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xoef1")
+script = ExtResource("1_f2cgy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_qhy7b")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="UsableRichText" parent="HBoxContainer" instance=ExtResource("3_kaydk")]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+text = "Mail"
+label_text = "Mail"
+text_size = 16
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -32,6 +32,7 @@ anchor_bottom = 1.0
 offset_top = -30.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme = ExtResource("1_i7qgi")
 theme_override_styles/panel = SubResource("StyleBoxFlat_1kit5")
 script = ExtResource("2_ssbim")
@@ -66,3 +67,14 @@ theme_override_font_sizes/font_size = 20
 text = "12:02"
 label_text = "12:02"
 text_size = 20
+
+[node name="AppContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.7
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20

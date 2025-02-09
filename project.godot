@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://Scenes/SignalBus.tscn"
+MusicManager="*res://Scenes/music_manager.tscn"
 
 [file_customization]
 
