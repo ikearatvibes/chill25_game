@@ -14,6 +14,7 @@ var current_body_objects : Array[UsableRichText]
 
 @onready var title_text: UsableRichText = $Background/Email/HeaderLine/TitleText
 @onready var prompt: UsableRichText = $Background/Prompt
+@onready var background: Panel = $Background
 
 #removal
 var currently_selected_removal : RemovalUI = null
@@ -24,8 +25,8 @@ var editing = false
 var removing_words = false
 var moving_words = false
 
-@onready var word_removal: RemovalUI = $RemovalUIContainer/WordRemoval
-@onready var word_moving: RemovalUI = $RemovalUIContainer/WordMoving
+@onready var word_removal: RemovalUI = $Background/RemovalUIContainer/WordRemoval
+@onready var word_moving: RemovalUI = $Background/RemovalUIContainer/WordMoving
 
 
 signal solved #calls when solved
@@ -105,6 +106,26 @@ func load_prompt():
 func setup_removal_ui(ui : RemovalUI, amount : int):
 	ui.visible = true
 	ui.amount = amount
+
+#~~~~~Animations~~~~~
+func exit_anim():
+	var tween = create_tween().set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
+	var animation_time = .75
+	
+	tween.tween_property(background, "position", Vector2(-size.x * 4, 0), animation_time)
+	
+	await tween.finished
+	tween.kill()
+
+func enter_anim():
+	background.position = Vector2(size.x * 2, 0)
+	var animation_time = 1
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	
+	tween.tween_property(background, "position", Vector2(0, 0), animation_time)
+	
+	await tween.finished
+	tween.kill()
 
 #~~~~~Puzzle Checking~~~~~
 

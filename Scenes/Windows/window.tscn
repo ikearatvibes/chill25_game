@@ -236,26 +236,26 @@ label_text = "Prompt!!!!!"
 default_text_bbcode = "[wave amp=50.0 freq=2.5 connected=1]%s[/wave]"
 color = Color(1, 1, 1, 1)
 
-[node name="RemovalUIContainer" type="VBoxContainer" parent="."]
+[node name="RemovalUIContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 0.2
 offset_left = -130.0
 offset_top = 50.0
-offset_right = -50.0
-offset_bottom = 40.0
+offset_right = -5.0
+offset_bottom = 65.0
 theme_override_constants/separation = 15
 
-[node name="WordRemoval" parent="RemovalUIContainer" instance=ExtResource("5_1vcwc")]
+[node name="WordRemoval" parent="Background/RemovalUIContainer" instance=ExtResource("5_1vcwc")]
 layout_mode = 2
 amount = 1
 texture = ExtResource("5_bjh7j")
 
-[node name="WordMoving" parent="RemovalUIContainer" instance=ExtResource("5_1vcwc")]
+[node name="WordMoving" parent="Background/RemovalUIContainer" instance=ExtResource("5_1vcwc")]
 layout_mode = 2
 amount = 1
 texture = ExtResource("6_sie1r")
 
 [connection signal="pressed" from="Background/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="toggled" from="RemovalUIContainer/WordRemoval" to="." method="_on_word_removal_toggled"]
-[connection signal="toggled" from="RemovalUIContainer/WordMoving" to="." method="_on_word_move_toggled"]
+[connection signal="toggled" from="Background/RemovalUIContainer/WordRemoval" to="." method="_on_word_removal_toggled"]
+[connection signal="toggled" from="Background/RemovalUIContainer/WordMoving" to="." method="_on_word_move_toggled"]

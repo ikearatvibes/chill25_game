@@ -8,13 +8,14 @@ var current_puzzle_index : int = 0
 
 @onready var next_button: Button = $NextButton
 
-
 func _ready() -> void:
 	load_next_puzzle()
 
 
 func load_next_puzzle():
 	window.load_puzzle(puzzle_progression[current_puzzle_index])
+	
+	await window.enter_anim()
 
 func puzzle_solved():
 	#put small animation here
@@ -31,5 +32,7 @@ func puzzle_solved():
 	if current_puzzle_index == puzzle_progression.size(): 
 		print("Game Won!")
 		return
+	
+	await window.exit_anim()
 	
 	load_next_puzzle()
